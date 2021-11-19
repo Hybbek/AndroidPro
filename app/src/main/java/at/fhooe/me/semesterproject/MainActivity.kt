@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import com.amadeus.android.Amadeus
 import com.amadeus.android.ApiResult
@@ -39,6 +40,10 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }*/
+        findViewById<Button>(R.id.button).setOnClickListener {
+            var app = application as SampleApplication;
+            app.get()
+        }
     }
 
     fun editText(view: View){

@@ -4,6 +4,8 @@ import android.app.Application
 import android.util.Log
 import com.amadeus.android.Amadeus
 import com.amadeus.android.ApiResult
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.*
 
 class SampleApplication: Application() {
@@ -22,7 +24,6 @@ class SampleApplication: Application() {
             .setClientSecret("AxCzH8vHVbZRsOOL")
             .build()
         get()
-
     }
 
     /*companion object {
@@ -31,7 +32,15 @@ class SampleApplication: Application() {
 
     fun get(){
          scope.launch {
-             val covidRes = amadeus.get("https://test.api.amadeus.com/v1/duty-of-care/diseases/covid19-area-report?countryCode=US")
+             try {
+                 val res = amadeus.get("v1/duty-of-care/diseases/covid19-area-report?countryCode=AT")
+                 Log.d(this.javaClass.simpleName, "requestApi = ${res.toString()}")
+                val covidRestrictions = Gson().fromJson(res.toString(), CovidRestrictions::class.java)
+                 Log.d(javaClass.simpleName, "Converted Object ${covidRestrictions}")
+             } catch (e: Exception) {
+                 Log.e(javaClass.simpleName, "Request failed", e)
+             }
+             /*amadeus
              when (val checkinLinks = amadeus.referenceData.urls.checkinLinks.get(airlineCode = "BA")) {
                  is ApiResult.Success -> {
                      Log.i("Result", "${checkinLinks.data}")
@@ -39,7 +48,7 @@ class SampleApplication: Application() {
                  is ApiResult.Error -> {
                      Log.i("Result", "${checkinLinks.errors}")
                  }
-             }
+             }*/
          }
     }
 
