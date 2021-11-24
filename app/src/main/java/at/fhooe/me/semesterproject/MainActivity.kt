@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    //Hat geklappt wenn das siehst
+
     /*fun editText(view: View){
         val getText = findViewById<EditText>(R.id.inputText)
         inputText = getText.text.toString()
