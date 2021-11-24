@@ -1,5 +1,6 @@
 package at.fhooe.me.semesterproject
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -23,6 +24,13 @@ class MainActivity : AppCompatActivity() {
             app.country_code = getText.text.toString()
 
             app.get()
+
+
+            val intent = Intent(this, CountryActivity::class.java)
+            startActivity(intent)
+
+
+
         }
     }
 
