@@ -38,6 +38,7 @@ class AccessAPI: Application() {
                  Log.d(this.javaClass.simpleName, "requestApi = ${res.toString()}")
                 val covidRestrictions = Gson().fromJson(res.toString(), CovidRestrictions::class.java)
                  Log.d(javaClass.simpleName, "Converted Object ${covidRestrictions}")
+
              } catch (e: Exception) {
                  Log.e(javaClass.simpleName, "Request failed", e)
              }

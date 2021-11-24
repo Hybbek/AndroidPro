@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
             var app = application as AccessAPI;
             val getText = findViewById<EditText>(R.id.inputText)
             app.country_code = getText.text.toString()
-
+            val obj: AreaAccessRestriction
             app.get()
 
 
