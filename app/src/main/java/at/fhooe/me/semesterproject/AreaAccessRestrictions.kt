@@ -6,18 +6,18 @@ data class CovidRestrictions(
 )
 
 data class Data(
-    val area: Area,
-    val areaAccessRestriction: AreaAccessRestriction,
-    val areaPolicy: AreaPolicy,
-    val areaRestrictions: List<AreaRestriction>,
-    val areaVaccinated: List<AreaVaccinated>,
-    val dataSources: DataSources,
-    val diseaseCases: DiseaseCases,
-    val diseaseInfection: DiseaseInfection,
-    val diseaseRiskLevel: String,
-    val relatedArea: List<RelatedArea>,
-    val summary: String,
-    val type: String
+    val area: Area? = null,
+    val areaAccessRestriction: AreaAccessRestriction? = null,
+    val areaPolicy: AreaPolicy? = null,
+    val areaRestrictions: List<AreaRestriction>? = null,
+    val areaVaccinated: List<AreaVaccinated>? = null,
+    val dataSources: DataSources? = null,
+    val diseaseCases: DiseaseCases? = null,
+    val diseaseInfection: DiseaseInfection? = null,
+    val diseaseRiskLevel: String? = null,
+    val relatedArea: List<RelatedArea>? = null,
+    val summary: String? = null,
+    val type: String? = null
 )
 
 data class Meta(

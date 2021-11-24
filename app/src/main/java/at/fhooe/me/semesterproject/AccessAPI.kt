@@ -7,6 +7,7 @@ import com.amadeus.android.ApiResult
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.*
+import kotlin.properties.Delegates
 
 class AccessAPI: Application() {
     val job = SupervisorJob()
@@ -15,6 +16,8 @@ class AccessAPI: Application() {
     private lateinit var amadeus: Amadeus
 
     var country_code = ""
+
+    //lateinit var covidRestrictions: CovidRestrictions
 
 
     override fun onCreate() {
@@ -29,18 +32,21 @@ class AccessAPI: Application() {
     }
 
 
-    fun get(){
-
+    fun get() {
          scope.launch {
              try {
 
                  val res = amadeus.get("v1/duty-of-care/diseases/covid19-area-report?countryCode=${country_code.uppercase()}")
                  Log.d(this.javaClass.simpleName, "requestApi = ${res.toString()}")
-                val covidRestrictions = Gson().fromJson(res.toString(), CovidRestrictions::class.java)
+                 val covidRestrictions = Gson().fromJson(res.toString(), CovidRestrictions::class.java)
                  Log.d(javaClass.simpleName, "Converted Object ${covidRestrictions}")
+
+
+
              } catch (e: Exception) {
                  Log.e(javaClass.simpleName, "Request failed", e)
              }
+
          }
     }
 
