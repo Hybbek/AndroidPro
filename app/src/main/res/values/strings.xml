@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">SemesterProject</string>
     <string name="choose_your_country">Choose your country!</string>
+    <string name="search_country_btn">search Country</string>
 </resources>

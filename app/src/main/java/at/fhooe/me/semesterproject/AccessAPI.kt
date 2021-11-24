@@ -8,12 +8,13 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.*
 
-class SampleApplication: Application() {
+class AccessAPI: Application() {
     val job = SupervisorJob()
     val scope = CoroutineScope(Dispatchers.Main + job)
 
     private lateinit var amadeus: Amadeus
 
+    var country_code = ""
 
 
     override fun onCreate() {
@@ -23,32 +24,23 @@ class SampleApplication: Application() {
             .setClientId("lrlm8XAjaYdJHlNnaRTu2sgpnbjBxxY3")
             .setClientSecret("AxCzH8vHVbZRsOOL")
             .build()
-        get()
+
+        //get()
     }
 
-    /*companion object {
-        lateinit var amadeus: Amadeus
-    }*/
 
     fun get(){
+
          scope.launch {
              try {
-                 val res = amadeus.get("v1/duty-of-care/diseases/covid19-area-report?countryCode=AT")
+
+                 val res = amadeus.get("v1/duty-of-care/diseases/covid19-area-report?countryCode=${country_code.uppercase()}")
                  Log.d(this.javaClass.simpleName, "requestApi = ${res.toString()}")
                 val covidRestrictions = Gson().fromJson(res.toString(), CovidRestrictions::class.java)
                  Log.d(javaClass.simpleName, "Converted Object ${covidRestrictions}")
              } catch (e: Exception) {
                  Log.e(javaClass.simpleName, "Request failed", e)
              }
-             /*amadeus
-             when (val checkinLinks = amadeus.referenceData.urls.checkinLinks.get(airlineCode = "BA")) {
-                 is ApiResult.Success -> {
-                     Log.i("Result", "${checkinLinks.data}")
-                 }
-                 is ApiResult.Error -> {
-                     Log.i("Result", "${checkinLinks.errors}")
-                 }
-             }*/
          }
     }
 
