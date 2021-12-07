@@ -1,7 +1,7 @@
 package at.fhooe.me.semesterproject
 
 data class CovidRestrictions(
-    val `data`: Data,
+    val `data`: Data, //data ist ein schlüsselwort in kotrlin -> deswegen die `data`
     val meta: Meta
 )
 
