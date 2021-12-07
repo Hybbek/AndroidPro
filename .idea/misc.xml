@@ -3,9 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Hagenberg_FH/3. Semester/Android Projekt/AndroidPro/app/src/main/res/drawable/ic_at.xml" value="0.17760416666666667" />
         <entry key="..\:/Hagenberg_FH/3. Semester/Android Projekt/AndroidPro/app/src/main/res/layout/activity_country.xml" value="0.22" />
         <entry key="..\:/Hagenberg_FH/3. Semester/Android Projekt/AndroidPro/app/src/main/res/layout/activity_main.xml" value="0.20425724637681159" />
+        <entry key="..\:/Users/Lukas/AndroidStudioProjects/AndroidPro/app/src/main/res/drawable/ic_at.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Lukas/AndroidStudioProjects/AndroidPro/app/src/main/res/layout/activity_country.xml" value="0.264" />
         <entry key="..\:/Users/Lukas/AndroidStudioProjects/SemesterProject/app/src/main/res/layout/activity_main.xml" value="0.264" />
       </map>
     </option>

@@ -3,13 +3,8 @@ package at.fhooe.me.semesterproject
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
-import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.launch
 
 
 class CountryActivity : AppCompatActivity() {
@@ -41,11 +36,26 @@ class CountryActivity : AppCompatActivity() {
 
             }
 
+            //Summary
+            val title = "Covid history summary"
+            findViewById<TextView>(R.id.title_summary).text = title
 
             val summary = covidRestriction.data.summary
             val htmlSummary = Html.fromHtml(summary, Html.FROM_HTML_MODE_COMPACT) // Bei paar Felder bekommen wir <p> zurück (HTML code) -> unschön
 
-            findViewById<TextView>(R.id.result).text = htmlSummary  //result = id von TextView
+
+            findViewById<TextView>(R.id.result_summary).text = htmlSummary  //result = id von TextView
+
+            //RiskLevel (evtl recyclerview anstatt text view für alle stats)
+            val riskLevel = covidRestriction.data.diseaseRiskLevel
+
+            findViewById<TextView>(R.id.result_risklevel).text = riskLevel
+
+            //Links
+            val webLinks = covidRestriction.data.dataSources?.covidDashboardLink
+            val webLinks2 = covidRestriction.data.dataSources?.governmentSiteLink
+            val weblinks_concat = webLinks + "\n" + webLinks2
+            findViewById<TextView>(R.id.web_link).text = weblinks_concat
         }
     }
 }
