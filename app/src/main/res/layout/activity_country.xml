@@ -28,7 +28,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                app:srcCompat="@drawable/ic_launcher_foreground" />
+                app:srcCompat="@drawable/ic_launcher_foreground"
+                android:contentDescription="TODO" />
 
             <TextView
                 android:id="@+id/title_summary"
@@ -58,11 +59,116 @@
                 android:textColor="@color/black"
                 android:text="@string/titlestats" />
 
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:stretchColumns="1">
+                <TableRow>
+                    <TextView
+                        android:text="@string/disease_risk_level"
+                        android:padding="3dip" />
+
+                    <TextView
+                        android:id="@+id/result_risklevel"
+                        android:gravity="right"
+                        android:padding="3dip"
+                        android:text="UNKNOWN" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:padding="3dip"
+                        android:text="@string/confirmed_cases" />
+
+                    <TextView
+                        android:id="@+id/result_confirmed_cases"
+                        android:gravity="right"
+                        android:padding="3dip"
+                        android:text="UNKNOWN" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:padding="3dip"
+                        android:text="@string/confirmed_deaths" />
+
+                    <TextView
+                        android:id="@+id/result_confirmed_deaths"
+                        android:gravity="right"
+                        android:padding="3dip"
+                        android:text="UNKNOWN" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:padding="3dip"
+                        android:text="@string/vaccinated_one_dose" />
+
+                    <TextView
+                        android:id="@+id/result_vaccination_one_dose"
+                        android:gravity="right"
+                        android:padding="3dip"
+                        android:text="UNKNOWN" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:padding="3dip"
+                        android:text="@string/vaccinated_fully" />
+
+                    <TextView
+                        android:id="@+id/result_vaccinated_fully"
+                        android:gravity="right"
+                        android:padding="3dip"
+                        android:text="UNKNOWN" />
+                </TableRow>
+            </TableLayout>
+
             <TextView
-                android:id="@+id/result_risklevel"
+                android:id="@+id/title_area_policy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/diseaserisklevel" />
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_horizontal"
+                android:text="@string/titleareapolicy"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+
+            <TextView
+                android:id="@+id/result_area_policy_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp" />
+
+            <TextView
+                android:id="@+id/result_mask_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/title_entry_policy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_horizontal"
+                android:text="@string/titleentrypolicy"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/result_entry_policy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
 
             <TextView
                 android:id="@+id/web_link"

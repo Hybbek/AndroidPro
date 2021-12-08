@@ -7,4 +7,11 @@
     <string name="title_sum">title_sum</string>
     <string name="weblinks">webLinks</string>
     <string name="titlestats">titleStats</string>
+    <string name="disease_risk_level">Disease risk level:</string>
+    <string name="confirmed_cases">Confirmed cases:</string>
+    <string name="confirmed_deaths">Confirmed deaths:</string>
+    <string name="vaccinated_one_dose">Vaccinated one dose:</string>
+    <string name="vaccinated_fully">Vaccinated fully:</string>
+    <string name="titleareapolicy">titleAreaPolicy</string>
+    <string name="titleentrypolicy">titleentrypolicy</string>
 </resources>

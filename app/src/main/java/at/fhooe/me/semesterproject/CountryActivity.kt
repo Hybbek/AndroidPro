@@ -37,8 +37,8 @@ class CountryActivity : AppCompatActivity() {
             }
 
             //Summary
-            val title = "Covid history summary"
-            findViewById<TextView>(R.id.title_summary).text = title
+            val titleSummary = "COVID COUNTRY SUMMARY"
+            findViewById<TextView>(R.id.title_summary).text = titleSummary
 
             val summary = covidRestriction.data.summary
             val htmlSummary = Html.fromHtml(summary, Html.FROM_HTML_MODE_COMPACT) // Bei paar Felder bekommen wir <p> zurück (HTML code) -> unschön
@@ -46,10 +46,48 @@ class CountryActivity : AppCompatActivity() {
 
             findViewById<TextView>(R.id.result_summary).text = htmlSummary  //result = id von TextView
 
-            //RiskLevel (evtl recyclerview anstatt text view für alle stats)
-            val riskLevel = covidRestriction.data.diseaseRiskLevel
+            val titleStats = "STATISTIC"
+            findViewById<TextView>(R.id.title_statistics).text = titleStats
 
+
+            // Table init
+            val riskLevel = covidRestriction.data.diseaseRiskLevel
             findViewById<TextView>(R.id.result_risklevel).text = riskLevel
+
+            val confirmed_cases = covidRestriction.data.diseaseCases?.confirmed
+            findViewById<TextView>(R.id.result_confirmed_cases).text = confirmed_cases.toString()
+            val confirmed_deaths = covidRestriction.data.diseaseCases?.deaths
+            findViewById<TextView>(R.id.result_confirmed_deaths).text = confirmed_deaths.toString()
+            val vaccinated_one_dose = covidRestriction.data.areaVaccinated?.get(0)?.percentage
+            val percentage = vaccinated_one_dose.toString() + " %"
+            findViewById<TextView>(R.id.result_vaccination_one_dose).text = percentage
+            val vaccinated_fully = covidRestriction.data.areaVaccinated?.get(1)?.percentage
+            val percentage2 = vaccinated_fully.toString() + " %"
+            findViewById<TextView>(R.id.result_vaccinated_fully).text = percentage2
+
+
+            // Area Policy
+            val areaPolicyTitel = "COUNTRY POLICY"
+            findViewById<TextView>(R.id.title_area_policy).text = areaPolicyTitel
+
+
+
+            val areaPolicyText = covidRestriction.data.areaPolicy?.text
+            val htmlAreaPolicyText = Html.fromHtml(areaPolicyText, Html.FROM_HTML_MODE_COMPACT)
+            findViewById<TextView>(R.id.result_area_policy_text).text = htmlAreaPolicyText
+
+            val maskRequired = covidRestriction.data.areaAccessRestriction?.mask?.text
+            val htmlMaskRequired = Html.fromHtml(maskRequired, Html.FROM_HTML_MODE_COMPACT)
+            findViewById<TextView>(R.id.result_mask_text).text = htmlMaskRequired
+
+
+            // Entry Policy
+            val titleEntryPolicy = "ENTRY RESTRICTION"
+            findViewById<TextView>(R.id.title_entry_policy).text = titleEntryPolicy
+
+            val entryPolicy = covidRestriction.data.areaAccessRestriction?.entry?.text
+            val htmlEntryPolicy = Html.fromHtml(entryPolicy, Html.FROM_HTML_MODE_COMPACT)
+            findViewById<TextView>(R.id.result_entry_policy).text = htmlEntryPolicy
 
             //Links
             val webLinks = covidRestriction.data.dataSources?.covidDashboardLink
