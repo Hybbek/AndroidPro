@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Html
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 
 
 class CountryActivity : AppCompatActivity() {
@@ -46,10 +47,6 @@ class CountryActivity : AppCompatActivity() {
 
             findViewById<TextView>(R.id.result_summary).text = htmlSummary  //result = id von TextView
 
-            //RiskLevel (evtl recyclerview anstatt text view für alle stats)
-            val riskLevel = covidRestriction.data.diseaseRiskLevel
-
-            findViewById<TextView>(R.id.result_risklevel).text = riskLevel
 
             //Links
             val webLinks = covidRestriction.data.dataSources?.covidDashboardLink

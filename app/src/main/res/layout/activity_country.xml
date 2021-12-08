@@ -58,6 +58,10 @@
                 android:textColor="@color/black"
                 android:text="@string/titlestats" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
             <TextView
                 android:id="@+id/result_risklevel"
                 android:layout_width="match_parent"
