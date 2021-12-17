@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
 
     val job = SupervisorJob()
     val scope = CoroutineScope(Dispatchers.Main + job)
-    var country_code = "";
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,13 +28,14 @@ class MainActivity : AppCompatActivity() {
 
 
         findViewById<Button>(R.id.search_btn).setOnClickListener {
+            val pickerText = findViewById<com.hbb20.CountryCodePicker>(R.id.countryCode_picker).textView_selectedCountry.text.toString()
+            val result = pickerText.drop(1)
 
-            val getText = findViewById<EditText>(R.id.inputText)
-            country_code = getText.text.toString()
-
-            loadCountry(country_code)
+            loadCountry(result)
         }
     }
+
+
 
     fun loadCountry(country_code: String) {
         scope.launch {

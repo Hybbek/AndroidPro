@@ -76,4 +76,8 @@ dependencies {
 
     //Convert from retrofit to GSON
     //implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    //Country code picker
+    implementation 'com.hbb20:ccp:2.4.5'
+
 }
