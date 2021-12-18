@@ -89,8 +89,12 @@ class CountryActivity : AppCompatActivity() {
             findViewById<TextView>(R.id.result_entry_policy).text = htmlEntryPolicy
 
             //Links
-            val webLinks = covidRestriction.data.dataSources?.covidDashboardLink
-            val webLinks2 = covidRestriction.data.dataSources?.governmentSiteLink
+            var webLinks = covidRestriction.data.dataSources?.covidDashboardLink
+            var webLinks2 = covidRestriction.data.dataSources?.governmentSiteLink
+
+            if(webLinks == null) webLinks = "";
+            if(webLinks2 == null) webLinks2 = "";
+
             val weblinks_concat = webLinks + "\n" + webLinks2
             findViewById<TextView>(R.id.web_link).text = weblinks_concat
         }
