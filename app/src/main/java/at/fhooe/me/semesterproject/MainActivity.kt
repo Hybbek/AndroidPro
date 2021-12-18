@@ -28,10 +28,10 @@ class MainActivity : AppCompatActivity() {
 
 
         findViewById<Button>(R.id.search_btn).setOnClickListener {
-            val pickerText = findViewById<com.hbb20.CountryCodePicker>(R.id.countryCode_picker).textView_selectedCountry.text.toString()
-            val result = pickerText.drop(1)
+            val pickerText = findViewById<com.hbb20.CountryCodePicker>(R.id.countryCode_picker).selectedCountryNameCode
 
-            loadCountry(result)
+
+            loadCountry(pickerText)
         }
     }
 

@@ -30,9 +30,7 @@ class CountryActivity : AppCompatActivity() {
             val flag = findViewById<ImageView>(R.id.flag)
 
             if (country_code != null) {
-
                 getFlag(country_code, flag)
-
             }
 
             //Summary
@@ -50,7 +48,7 @@ class CountryActivity : AppCompatActivity() {
 
 
             // Table init
-            val riskLevel = covidRestriction.data.diseaseRiskLevel
+            val riskLevel = covidRestriction.data?.diseaseRiskLevel
             findViewById<TextView>(R.id.result_risklevel).text = riskLevel
 
             val confirmed_cases = covidRestriction.data.diseaseCases?.confirmed
@@ -71,7 +69,9 @@ class CountryActivity : AppCompatActivity() {
 
 
 
-            val areaPolicyText = covidRestriction.data.areaPolicy?.text
+            var areaPolicyText = covidRestriction.data.areaPolicy?.text
+
+            if(areaPolicyText == null) areaPolicyText = "Area Policy: NO INFORMATION"
             val htmlAreaPolicyText = Html.fromHtml(areaPolicyText, Html.FROM_HTML_MODE_COMPACT)
             findViewById<TextView>(R.id.result_area_policy_text).text = htmlAreaPolicyText
 
@@ -102,7 +102,7 @@ class CountryActivity : AppCompatActivity() {
 
     fun getFlag(country_code: String, flag: ImageView) {
         if(country_code.uppercase() == "AT") {
-            flag.setImageResource(R.drawable.ic_at) //ic_at ist die Flagge von AT im drawable ordner
+            flag.setImageResource(R.drawable.flag_austria) //ic_at ist die Flagge von AT im drawable ordner
             return
         }
         if(country_code.uppercase() == "DE") {

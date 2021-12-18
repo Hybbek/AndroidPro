@@ -125,6 +125,7 @@
                         android:text="@string/vaccinated_one_dose"
                         android:textColor="@color/black"/>
 
+
                     <TextView
                         android:id="@+id/result_vaccination_one_dose"
                         android:gravity="right"

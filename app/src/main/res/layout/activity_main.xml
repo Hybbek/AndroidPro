@@ -9,34 +9,50 @@
     >
 
 
+    <!--android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/draw_button"
+        android:gravity="center"
+        android:background="@drawable/draw_button"
+         -->
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/choose_your_country"
+        android:textColor="@color/white"
         android:textSize="32sp"
-        android:textColor="@color/chocolate_web"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/countryCode_picker"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.359" />
 
     <com.hbb20.CountryCodePicker
         android:id="@+id/countryCode_picker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/draw_button"
+        android:layout_marginBottom="100dp"
         app:ccpDialog_textColor="@color/black"
         app:ccp_arrowColor="@color/white"
-        app:ccp_showFullName="false"
-        app:ccp_showPhoneCode="false"
+        app:ccp_arrowSize="30dp"
+        app:ccp_autoDetectCountry="true"
         app:ccp_contentColor="@color/white"
+        app:ccp_showFullName="true"
+        app:ccp_showPhoneCode="false"
+
+        app:ccp_textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="@+id/search_btn"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="@+id/search_btn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499">
 
     </com.hbb20.CountryCodePicker>
 
@@ -44,9 +60,12 @@
         android:id="@+id/search_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/search_country_btn"
+        android:layout_marginBottom="-200dp"
         android:background="@drawable/draw_button"
         android:backgroundTint="@null"
+        android:text="@string/search_country_btn"
+        android:textSize="30dp"
+        android:textStyle="bold"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
