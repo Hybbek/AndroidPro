@@ -73,4 +73,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/countryCode_picker" />
 
+    <!--at.fhooe.me.semesterproject.SubmitButton
+        android:id="@+id/search_btn"
+        android:layout_width="78dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/search_country_btn"
+        android:textColor="@color/gray"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/countryCode_picker"
+        app:sub_btn_background="@color/white"
+        app:sub_btn_duration="1000"
+        app:sub_btn_line_color="@color/android_green"
+        app:sub_btn_ripple_color="@color/android_green"
+        app:sub_btn_tick_color="@color/white" /-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>

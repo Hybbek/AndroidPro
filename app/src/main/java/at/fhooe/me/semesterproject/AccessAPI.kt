@@ -26,8 +26,8 @@ class AccessAPI: Application() {
         super.onCreate()
         amadeus = Amadeus.Builder(context = this)
             .setCustomAppIdAndVersion("com.amadeus.android.demo", "1.3.0")
-            .setClientId("lrlm8XAjaYdJHlNnaRTu2sgpnbjBxxY3")
-            .setClientSecret("AxCzH8vHVbZRsOOL")
+            .setClientId("ozRvdBqRazWhWXH8c0aVNAJlKmyo0eCD")
+            .setClientSecret("yb8cDE5aJHtoF0iM")
             .build()
 
         //get()

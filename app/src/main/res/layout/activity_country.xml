@@ -143,7 +143,7 @@
                             android:id="@+id/result_vaccination_one_dose"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="right"
+                            android:gravity="center"
                             android:padding="6dip"
                             android:text="UNKNOWN"
                             android:textColor="@color/black" />
@@ -175,7 +175,7 @@
                             android:id="@+id/result_vaccinated_fully"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="right"
+                            android:gravity="center"
                             android:padding="6dip"
                             android:text="UNKNOWN"
                             android:textColor="@color/black" />

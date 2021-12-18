@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -29,11 +30,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+        /*findViewById<SubmitButton>(R.id.search_btn).setOnClickListener {
+            val pickerText =
+                findViewById<com.hbb20.CountryCodePicker>(R.id.countryCode_picker).selectedCountryNameCode
+            loadCountry(pickerText)
+        }*/
+
         findViewById<Button>(R.id.search_btn).setOnClickListener {
             val pickerText =
                 findViewById<com.hbb20.CountryCodePicker>(R.id.countryCode_picker).selectedCountryNameCode
-
-
             loadCountry(pickerText)
         }
     }
@@ -43,9 +50,17 @@ class MainActivity : AppCompatActivity() {
         scope.launch {
             try {
 
+                /*
+                (application as AccessAPI).load(country_code)
+                Handler().postDelayed({
+                    startCountryActivity()
+                    findViewById<SubmitButton>(R.id.search_btn).reset()
+                }, 1000)
+                */
+
                 (application as AccessAPI).load(country_code)
                 startCountryActivity()
-
+                findViewById<Button>(R.id.search_btn)
             } catch (e: HttpException) {
 
                 sendToast("Invalid Country Code")

@@ -96,6 +96,7 @@ class CountryActivity : AppCompatActivity() {
                     else -> 0xfff
                 }
                 pBar2.progressTintList = ColorStateList.valueOf(color)
+
             }
 
             val percentage2 = vaccinated_fully.toString() + " %"
