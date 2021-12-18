@@ -27,11 +27,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        findViewById<Button>(R.id.search_btn).setOnClickListener {
-            val pickerText = findViewById<com.hbb20.CountryCodePicker>(R.id.countryCode_picker).textView_selectedCountry.text.toString()
-            val result = pickerText.drop(1)
 
-            loadCountry(result)
+        findViewById<Button>(R.id.search_btn).setOnClickListener {
+            val pickerText = findViewById<com.hbb20.CountryCodePicker>(R.id.countryCode_picker).selectedCountryNameCode
+            //val flag = findViewById<com.hbb20.CountryCodePicker>(R.id.flag).imageViewFlag.drawable
+            loadCountry(pickerText)
         }
     }
 

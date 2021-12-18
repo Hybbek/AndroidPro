@@ -1,5 +1,6 @@
 package at.fhooe.me.semesterproject
 
+import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
@@ -25,8 +26,11 @@ class CountryActivity : AppCompatActivity() {
     fun setData(covidRestriction: CovidRestrictions) { //hier die ganzen daten den TextViews/Labes etc. zuweisen.
         this.runOnUiThread {
 
+
+            //BitmapDrawable usFlag = Flags.forCountry("US")
             val country_code = covidRestriction.data.area?.iataCode
             val flag = findViewById<ImageView>(R.id.flag)
+            //val flag1 = findViewById<com.hbb20.CountryCodePicker>(R.id.flag).imageViewFlag
 
             if (country_code != null) {
 
@@ -72,8 +76,11 @@ class CountryActivity : AppCompatActivity() {
 
 
 
-            val areaPolicyText = covidRestriction.data.areaPolicy?.text
-            val htmlAreaPolicyText = Html.fromHtml(areaPolicyText, Html.FROM_HTML_MODE_COMPACT)
+            var areaPolicyText = covidRestriction.data.areaPolicy?.text
+            if(areaPolicyText == null) areaPolicyText = "NO FURTHER INFORMATIONS";
+            val s = buildString { append("Area Policy: ", areaPolicyText) }
+
+            val htmlAreaPolicyText = Html.fromHtml(s, Html.FROM_HTML_MODE_COMPACT)
             findViewById<TextView>(R.id.result_area_policy_text).text = htmlAreaPolicyText
 
             val maskRequired = covidRestriction.data.areaAccessRestriction?.mask?.text

@@ -24,12 +24,13 @@
 
     <com.hbb20.CountryCodePicker
         android:id="@+id/countryCode_picker"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:ccp_showFullName="true"
         app:ccp_showPhoneCode="false"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/search_btn"
+        app:layout_constraintStart_toStartOf="@+id/search_btn"
         app:layout_constraintTop_toTopOf="parent">
 
     </com.hbb20.CountryCodePicker>
@@ -38,6 +39,7 @@
         android:id="@+id/search_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="-100dp"
         android:text="@string/search_country_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
