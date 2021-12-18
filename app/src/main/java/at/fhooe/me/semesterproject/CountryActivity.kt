@@ -3,19 +3,25 @@ package at.fhooe.me.semesterproject
 import android.content.res.ColorStateList
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
+import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import kotlin.math.round
+import kotlin.math.roundToInt
 
 
 class CountryActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_country)
+
 
         val flagArr = intent.extras?.getByteArray("flag")
         flagArr?.let {
@@ -68,7 +74,9 @@ class CountryActivity : AppCompatActivity() {
             if (vaccinated_one_dose != null) {
                 findViewById<ProgressBar>(R.id.progressBar_oneDose).progress = vaccinated_one_dose.toInt()
             }
-            val percentage = vaccinated_one_dose.toString() + " %"
+
+            val vaccinated_oneDose_round = vaccinated_one_dose?.let { Math.round(it) }
+            val percentage = vaccinated_oneDose_round.toString() + " %"
             val pBar = findViewById<ProgressBar>(R.id.progressBar_oneDose)
 
             vaccinated_one_dose?.let {
@@ -78,10 +86,11 @@ class CountryActivity : AppCompatActivity() {
                     else -> 0xfff
                 }
                 pBar.progressTintList = ColorStateList.valueOf(color)
+                pBar.progressBackgroundTintList = ColorStateList.valueOf(color)
             }
 
             findViewById<TextView>(R.id.result_vaccination_one_dose).text = percentage
-            val vaccinated_fully = covidRestriction.data.areaVaccinated?.get(1)?.percentage
+            var vaccinated_fully = covidRestriction.data.areaVaccinated?.get(1)?.percentage
 
             if (vaccinated_fully != null) {
                 findViewById<ProgressBar>(R.id.progressBar_fully).progress = vaccinated_fully.toInt()
@@ -96,10 +105,11 @@ class CountryActivity : AppCompatActivity() {
                     else -> 0xfff
                 }
                 pBar2.progressTintList = ColorStateList.valueOf(color)
-
+                pBar2.progressBackgroundTintList = ColorStateList.valueOf(color)
             }
 
-            val percentage2 = vaccinated_fully.toString() + " %"
+            val vaccinated_fully_round = vaccinated_fully?.let { Math.round(it) }
+            val percentage2 = vaccinated_fully_round.toString() + " %"
             findViewById<TextView>(R.id.result_vaccinated_fully).text = percentage2
 
 
