@@ -13,6 +13,7 @@ class CountryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_country)
 
+
         val result = (application as AccessAPI).get()
         setData(result)
     }
@@ -30,9 +31,7 @@ class CountryActivity : AppCompatActivity() {
 
             if (country_code != null) {
 
-                if(country_code.uppercase() == "AT") {
-                    flag.setImageResource(R.drawable.ic_at) //ic_at ist die Flagge von AT im drawable ordner
-                }
+                getFlag(country_code, flag)
 
             }
 
@@ -95,5 +94,116 @@ class CountryActivity : AppCompatActivity() {
             val weblinks_concat = webLinks + "\n" + webLinks2
             findViewById<TextView>(R.id.web_link).text = weblinks_concat
         }
+    }
+
+    fun getFlag(country_code: String, flag: ImageView) {
+        if(country_code.uppercase() == "AT") {
+            flag.setImageResource(R.drawable.ic_at) //ic_at ist die Flagge von AT im drawable ordner
+            return
+        }
+        if(country_code.uppercase() == "DE") {
+            flag.setImageResource(R.drawable.de)
+            return
+        }
+        if(country_code.uppercase() == "CH") {
+            flag.setImageResource(R.drawable.ch)
+            return
+        }
+        if(country_code.uppercase() == "IT") {
+            flag.setImageResource(R.drawable.it)
+            return
+        }
+        if(country_code.uppercase() == "CZ") {
+            flag.setImageResource(R.drawable.cz)
+            return
+        }
+        if(country_code.uppercase() == "DK") {
+            flag.setImageResource(R.drawable.dk)
+            return
+        }
+        if(country_code.uppercase() == "EE") {
+            flag.setImageResource(R.drawable.ee)
+            return
+        }
+        if(country_code.uppercase() == "IE") {
+            flag.setImageResource(R.drawable.ie)
+            return
+        }
+        if(country_code.uppercase() == "gr") {
+            flag.setImageResource(R.drawable.gr)
+            return
+        }
+        if(country_code.uppercase() == "GB") {
+            flag.setImageResource(R.drawable.gb)
+            return
+        }
+        if(country_code.uppercase() == "ES") {
+            flag.setImageResource(R.drawable.es)
+            return
+        }
+        if(country_code.uppercase() == "FR") {
+            flag.setImageResource(R.drawable.fr)
+            return
+        }
+        if(country_code.uppercase() == "HR") {
+            flag.setImageResource(R.drawable.hr)
+            return
+        }
+        if(country_code.uppercase() == "LT") {
+            flag.setImageResource(R.drawable.lt)
+            return
+        }
+        if(country_code.uppercase() == "LU") {
+            flag.setImageResource(R.drawable.lu)
+            return
+        }
+        if(country_code.uppercase() == "HU") {
+            flag.setImageResource(R.drawable.hu)
+            return
+        }
+        if(country_code.uppercase() == "MT") {
+            flag.setImageResource(R.drawable.mt)
+            return
+        }
+        if(country_code.uppercase() == "NL") {
+            flag.setImageResource(R.drawable.nl)
+            return
+        }
+        if(country_code.uppercase() == "PL") {
+            flag.setImageResource(R.drawable.pl)
+            return
+        }
+        if(country_code.uppercase() == "PT") {
+            flag.setImageResource(R.drawable.pt)
+            return
+        }
+        if(country_code.uppercase() == "RO") {
+            flag.setImageResource(R.drawable.ro)
+            return
+        }
+        if(country_code.uppercase() == "SI") {
+            flag.setImageResource(R.drawable.si)
+            return
+        }
+        if(country_code.uppercase() == "SK") {
+            flag.setImageResource(R.drawable.sk)
+            return
+        }
+        if(country_code.uppercase() == "BA") {
+            flag.setImageResource(R.drawable.ba)
+            return
+        }
+        if(country_code.uppercase() == "FI") {
+            flag.setImageResource(R.drawable.fi)
+            return
+        }
+        if(country_code.uppercase() == "SE") {
+            flag.setImageResource(R.drawable.se)
+            return
+        }
+        else {
+            flag.setImageResource(R.drawable.ic_flight)
+        }
+
     }
 }
