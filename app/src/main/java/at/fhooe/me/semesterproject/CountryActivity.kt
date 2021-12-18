@@ -1,10 +1,13 @@
 package at.fhooe.me.semesterproject
 
-import android.graphics.drawable.BitmapDrawable
+import android.content.res.ColorStateList
+import android.graphics.BitmapFactory
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 
 
@@ -13,6 +16,13 @@ class CountryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_country)
+
+        val flagArr = intent.extras?.getByteArray("flag")
+        flagArr?.let {
+            val img = BitmapFactory.decodeByteArray(flagArr, 0, flagArr.size)
+            findViewById<ImageView>(R.id.flag).setImageBitmap(img)
+        }
+
 
         val result = (application as AccessAPI).get()
         setData(result)
@@ -26,19 +36,9 @@ class CountryActivity : AppCompatActivity() {
     fun setData(covidRestriction: CovidRestrictions) { //hier die ganzen daten den TextViews/Labes etc. zuweisen.
         this.runOnUiThread {
 
-
-            //BitmapDrawable usFlag = Flags.forCountry("US")
             val country_code = covidRestriction.data.area?.iataCode
             val flag = findViewById<ImageView>(R.id.flag)
-            //val flag1 = findViewById<com.hbb20.CountryCodePicker>(R.id.flag).imageViewFlag
 
-            if (country_code != null) {
-
-                if(country_code.uppercase() == "AT") {
-                    flag.setImageResource(R.drawable.ic_at) //ic_at ist die Flagge von AT im drawable ordner
-                }
-
-            }
 
             //Summary
             val titleSummary = "COVID COUNTRY SUMMARY"
@@ -55,17 +55,49 @@ class CountryActivity : AppCompatActivity() {
 
 
             // Table init
-            val riskLevel = covidRestriction.data.diseaseRiskLevel
+            val riskLevel = covidRestriction.data?.diseaseRiskLevel
             findViewById<TextView>(R.id.result_risklevel).text = riskLevel
 
             val confirmed_cases = covidRestriction.data.diseaseCases?.confirmed
             findViewById<TextView>(R.id.result_confirmed_cases).text = confirmed_cases.toString()
             val confirmed_deaths = covidRestriction.data.diseaseCases?.deaths
             findViewById<TextView>(R.id.result_confirmed_deaths).text = confirmed_deaths.toString()
+
             val vaccinated_one_dose = covidRestriction.data.areaVaccinated?.get(0)?.percentage
+
+            if (vaccinated_one_dose != null) {
+                findViewById<ProgressBar>(R.id.progressBar_oneDose).progress = vaccinated_one_dose.toInt()
+            }
             val percentage = vaccinated_one_dose.toString() + " %"
+            val pBar = findViewById<ProgressBar>(R.id.progressBar_oneDose)
+
+            vaccinated_one_dose?.let {
+                val color = when {
+                    it < 80.0 -> Color.RED
+                    it >= 80.0 -> resources.getColor(R.color.android_green)
+                    else -> 0xfff
+                }
+                pBar.progressTintList = ColorStateList.valueOf(color)
+            }
+
             findViewById<TextView>(R.id.result_vaccination_one_dose).text = percentage
             val vaccinated_fully = covidRestriction.data.areaVaccinated?.get(1)?.percentage
+
+            if (vaccinated_fully != null) {
+                findViewById<ProgressBar>(R.id.progressBar_fully).progress = vaccinated_fully.toInt()
+            }
+
+            val pBar2 = findViewById<ProgressBar>(R.id.progressBar_fully)
+
+            vaccinated_fully?.let {
+                val color = when {
+                    it < 80.0 -> Color.RED
+                    it >= 80.0 -> resources.getColor(R.color.android_green)
+                    else -> 0xfff
+                }
+                pBar2.progressTintList = ColorStateList.valueOf(color)
+            }
+
             val percentage2 = vaccinated_fully.toString() + " %"
             findViewById<TextView>(R.id.result_vaccinated_fully).text = percentage2
 
@@ -77,13 +109,15 @@ class CountryActivity : AppCompatActivity() {
 
 
             var areaPolicyText = covidRestriction.data.areaPolicy?.text
-            if(areaPolicyText == null) areaPolicyText = "NO FURTHER INFORMATIONS";
-            val s = buildString { append("Area Policy: ", areaPolicyText) }
+            if(areaPolicyText == null) areaPolicyText = "NO INFORMATION"
+            areaPolicyText = "Area Policy: $areaPolicyText"
 
-            val htmlAreaPolicyText = Html.fromHtml(s, Html.FROM_HTML_MODE_COMPACT)
+            val htmlAreaPolicyText = Html.fromHtml(areaPolicyText, Html.FROM_HTML_MODE_COMPACT)
             findViewById<TextView>(R.id.result_area_policy_text).text = htmlAreaPolicyText
 
-            val maskRequired = covidRestriction.data.areaAccessRestriction?.mask?.text
+            var maskRequired = covidRestriction.data.areaAccessRestriction?.mask?.text
+            if(maskRequired == null) maskRequired = "NO INFORMATION"
+            maskRequired = "Mask regulation: $maskRequired"
             val htmlMaskRequired = Html.fromHtml(maskRequired, Html.FROM_HTML_MODE_COMPACT)
             findViewById<TextView>(R.id.result_mask_text).text = htmlMaskRequired
 
@@ -97,8 +131,12 @@ class CountryActivity : AppCompatActivity() {
             findViewById<TextView>(R.id.result_entry_policy).text = htmlEntryPolicy
 
             //Links
-            val webLinks = covidRestriction.data.dataSources?.covidDashboardLink
-            val webLinks2 = covidRestriction.data.dataSources?.governmentSiteLink
+            var webLinks = covidRestriction.data.dataSources?.covidDashboardLink
+            var webLinks2 = covidRestriction.data.dataSources?.governmentSiteLink
+
+            if(webLinks == null) webLinks = "";
+            if(webLinks2 == null) webLinks2 = "";
+
             val weblinks_concat = webLinks + "\n" + webLinks2
             findViewById<TextView>(R.id.web_link).text = weblinks_concat
         }
