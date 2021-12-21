@@ -42,10 +42,12 @@
         app:ccp_arrowColor="@color/white"
         app:ccp_arrowSize="30dp"
         app:ccp_autoDetectCountry="true"
+
+        app:ccp_rememberLastSelection="true"
+
         app:ccp_contentColor="@color/white"
         app:ccp_showFullName="true"
         app:ccp_showPhoneCode="false"
-
         app:ccp_textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/search_btn"
