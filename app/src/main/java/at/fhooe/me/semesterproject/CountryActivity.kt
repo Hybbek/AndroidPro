@@ -3,16 +3,12 @@ package at.fhooe.me.semesterproject
 import android.content.res.ColorStateList
 import android.graphics.BitmapFactory
 import android.graphics.Color
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
-import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
-import kotlin.math.round
-import kotlin.math.roundToInt
 
 
 class CountryActivity : AppCompatActivity() {
@@ -42,8 +38,8 @@ class CountryActivity : AppCompatActivity() {
     fun setData(covidRestriction: CovidRestrictions) { //hier die ganzen daten den TextViews/Labes etc. zuweisen.
         this.runOnUiThread {
 
-            val country_code = covidRestriction.data.area?.iataCode
-            val flag = findViewById<ImageView>(R.id.flag)
+            //val country_code = covidRestriction.data.area?.iataCode
+            //val flag = findViewById<ImageView>(R.id.flag)
 
 
             //Summary
@@ -61,7 +57,7 @@ class CountryActivity : AppCompatActivity() {
 
 
             // Table init
-            val riskLevel = covidRestriction.data?.diseaseRiskLevel
+            val riskLevel = covidRestriction.data.diseaseRiskLevel
             findViewById<TextView>(R.id.result_risklevel).text = riskLevel
 
             val confirmed_cases = covidRestriction.data.diseaseCases?.confirmed
@@ -145,8 +141,8 @@ class CountryActivity : AppCompatActivity() {
             var webLinks = covidRestriction.data.dataSources?.covidDashboardLink
             var webLinks2 = covidRestriction.data.dataSources?.governmentSiteLink
 
-            if(webLinks == null) webLinks = "";
-            if(webLinks2 == null) webLinks2 = "";
+            if(webLinks == null) webLinks = ""
+            if(webLinks2 == null) webLinks2 = ""
 
             val weblinks_concat = webLinks + "\n" + webLinks2
             findViewById<TextView>(R.id.web_link).text = weblinks_concat

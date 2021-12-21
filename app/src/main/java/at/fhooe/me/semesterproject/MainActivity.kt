@@ -46,43 +46,28 @@ class MainActivity : AppCompatActivity() {
         //editor.clear()
         //editor.commit()
 
-        string_countries_viewed = sharedPreference.getString("myKey","AT").toString()
-        countries_viewed_counter = sharedPreference.getInt("myKey2", 0).toInt()
+        string_countries_viewed = sharedPreference.getString("myKey",string_countries_viewed).toString()
+        countries_viewed_counter = sharedPreference.getInt("myKey2", countries_viewed_counter).toInt()
 
         setContentView(R.layout.activity_main)
-
-        /*findViewById<SubmitButton>(R.id.search_btn).setOnClickListener {
-            val pickerText =
-                findViewById<com.hbb20.CountryCodePicker>(R.id.countryCode_picker).selectedCountryNameCode
-            loadCountry(pickerText)
-        }*/
-
-
-
-
+        findViewById<com.hbb20.CountryCodePicker>(R.id.countryCode_picker)?.setCountryPreference(string_countries_viewed)
 
 
         findViewById<Button>(R.id.search_btn).setOnClickListener {
-
+            //get the Country code from chosen country
             val pickerText =
                 findViewById<com.hbb20.CountryCodePicker>(R.id.countryCode_picker).selectedCountryNameCode
 
-            string_countries_viewed = sharedPreference.getString("myKey","AT").toString()
 
             if(string_countries_viewed.equals("")) string_countries_viewed =  pickerText + string_countries_viewed
             else string_countries_viewed = pickerText  + "," + string_countries_viewed
 
-            if(countries_viewed_counter > 1) string_countries_viewed = string_countries_viewed.dropLast(3)
+            if(countries_viewed_counter > 4) string_countries_viewed = string_countries_viewed.dropLast(3)
             else countries_viewed_counter++
-
 
             editor.putString("myKey", string_countries_viewed)
             editor.putInt("myKey2", countries_viewed_counter)
             editor.apply()
-
-
-
-
 
             findViewById<com.hbb20.CountryCodePicker>(R.id.countryCode_picker).setCountryPreference(string_countries_viewed)
 

@@ -41,7 +41,6 @@
         app:ccpDialog_textColor="@color/black"
         app:ccp_arrowColor="@color/white"
         app:ccp_arrowSize="30dp"
-        app:ccp_autoDetectCountry="true"
 
         app:ccp_rememberLastSelection="true"
 
