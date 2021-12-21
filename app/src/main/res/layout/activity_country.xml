@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CountryActivity"
-    android:background="@drawable/virus10">
+    android:background="@drawable/virus11">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="5dp"
@@ -29,56 +30,59 @@
                 android:id="@+id/flag"
                 android:layout_width="200dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="20dp"
                 android:layout_gravity="center_horizontal"
-                app:srcCompat="@drawable/ic_launcher_foreground"
-                android:contentDescription="TODO" />
+                android:layout_marginTop="20dp"
+                android:contentDescription="TODO"
+                app:srcCompat="@drawable/ic_launcher_foreground" />
 
             <TextView
                 android:id="@+id/title_summary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="5dp"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
+                android:background="@drawable/upper_lower_border"
+                android:gravity="center_horizontal"
                 android:text="@string/title_sum"
-                android:background="@drawable/upper_lower_border"/>
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/result_summary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/summary"
                 android:justificationMode="inter_word"
-                android:textColor="@color/black"
-                android:padding="6dip" />
+                android:padding="6dip"
+                android:text="@string/summary"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/title_statistics"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="5dp"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
+                android:background="@drawable/upper_lower_border"
+                android:gravity="center_horizontal"
                 android:text="@string/titlestats"
-                android:background="@drawable/upper_lower_border" />
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
 
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:paddingBottom="20dp"
                 android:stretchColumns="1">
+
                 <TableRow>
+
                     <TextView
+                        android:padding="6dip"
                         android:text="@string/disease_risk_level"
-                        android:textColor="@color/black"
-                        android:padding="6dip" />
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/result_risklevel"
@@ -93,14 +97,14 @@
                     <TextView
                         android:padding="6dip"
                         android:text="@string/confirmed_cases"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/result_confirmed_cases"
                         android:gravity="right"
                         android:padding="6dip"
                         android:text="UNKNOWN"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/black" />
                 </TableRow>
 
                 <TableRow>
@@ -108,14 +112,14 @@
                     <TextView
                         android:padding="6dip"
                         android:text="@string/confirmed_deaths"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/result_confirmed_deaths"
                         android:gravity="right"
                         android:padding="6dip"
                         android:text="UNKNOWN"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/black" />
                 </TableRow>
 
                 <TableRow>
@@ -123,27 +127,27 @@
                     <TextView
                         android:padding="6dip"
                         android:text="@string/vaccinated_one_dose"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/black" />
 
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
+                        android:layout_height="match_parent">
 
                         <ProgressBar
                             android:id="@+id/progressBar_oneDose"
                             style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:progressDrawable="@drawable/draw_progressbar"
                             android:max="100"
-                            android:padding="6dp"/>
+                            android:padding="6dp"
+                            android:progressDrawable="@drawable/draw_progressbar" />
 
                         <TextView
                             android:id="@+id/result_vaccination_one_dose"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="right"
+                            android:gravity="center"
                             android:padding="6dip"
                             android:text="UNKNOWN"
                             android:textColor="@color/black" />
@@ -156,26 +160,26 @@
                     <TextView
                         android:padding="6dip"
                         android:text="@string/vaccinated_fully"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/black" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
+                        android:layout_height="match_parent">
 
                         <ProgressBar
                             android:id="@+id/progressBar_fully"
                             style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:progressDrawable="@drawable/draw_progressbar"
                             android:max="100"
-                            android:padding="6dp"/>
+                            android:padding="6dp"
+                            android:progressDrawable="@drawable/draw_progressbar" />
 
                         <TextView
                             android:id="@+id/result_vaccinated_fully"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="right"
+                            android:gravity="center"
                             android:padding="6dip"
                             android:text="UNKNOWN"
                             android:textColor="@color/black" />
@@ -190,12 +194,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="5dp"
+                android:background="@drawable/upper_lower_border"
                 android:gravity="center_horizontal"
                 android:text="@string/titleareapolicy"
-                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:background="@drawable/upper_lower_border"/>
+                android:textStyle="bold" />
 
 
             <TextView
@@ -203,17 +207,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:textColor="@color/black"
                 android:justificationMode="inter_word"
-                android:padding="6dip"/>
+                android:padding="6dip"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/result_mask_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:justificationMode="inter_word"
-                android:padding="6dip"/>
+                android:padding="6dip"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/title_entry_policy"
@@ -221,32 +225,34 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="5dp"
+                android:background="@drawable/upper_lower_border"
                 android:gravity="center_horizontal"
                 android:text="@string/titleentrypolicy"
-                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:background="@drawable/upper_lower_border" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/result_entry_policy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:justificationMode="inter_word"
-                android:padding="6dip"/>
-
+                android:padding="6dip"
+                android:textColor="@color/black"
+                android:textColorLink="@color/green_blue_crayola"/>
 
 
             <TextView
                 android:id="@+id/web_link"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/weblinks"
-                android:justificationMode="inter_word"
-                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:padding="6dip"
                 android:autoLink="web"
-                android:layout_gravity="center"/>
+                android:justificationMode="inter_word"
+                android:text="@string/weblinks"
+                android:textColor="@color/black"
+                android:textColorLink="@color/green_blue_crayola"/>
         </LinearLayout>
     </ScrollView>
 

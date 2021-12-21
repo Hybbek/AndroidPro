@@ -15,4 +15,11 @@
     <color name="transparent">#00ffffff</color>
     <color name="android_green">#99C24D</color>
 
+    <color name="sub_btn_background">#424a52</color>
+    <color name="sub_btn_line">#00c68c</color>
+    <color name="sub_btn_ripple">#eff0f2</color>
+    <color name="sub_btn_tick">#eff0f2</color>
+    <color name="gray">#627676</color>
+    <color name="yellow">#eef26c</color>
+
 </resources>
