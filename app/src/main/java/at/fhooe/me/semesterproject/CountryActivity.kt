@@ -31,7 +31,7 @@ class CountryActivity : AppCompatActivity() {
     ############# Alle Daten hier ausgeben ####################
     ###########################################################
      */
-    fun setData(covidRestriction: CovidRestrictions) { //hier die ganzen daten den TextViews/Labes etc. zuweisen.
+    fun setData(covidRestriction: CovidRestrictions) {
         this.runOnUiThread {
 
             //Summary
