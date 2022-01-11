@@ -10,21 +10,17 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 
-
 class CountryActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_country)
-
 
         val flagArr = intent.extras?.getByteArray("flag")
         flagArr?.let {
             val img = BitmapFactory.decodeByteArray(flagArr, 0, flagArr.size)
             findViewById<ImageView>(R.id.flag).setImageBitmap(img)
         }
-
 
         val result = (application as AccessAPI).get()
         setData(result)
@@ -38,20 +34,12 @@ class CountryActivity : AppCompatActivity() {
     fun setData(covidRestriction: CovidRestrictions) { //hier die ganzen daten den TextViews/Labes etc. zuweisen.
         this.runOnUiThread {
 
-            //val country_code = covidRestriction.data.area?.iataCode
-            //val flag = findViewById<ImageView>(R.id.flag)
-
-
             //Summary
             val titleSummary = "COVID COUNTRY SUMMARY"
             findViewById<TextView>(R.id.title_summary).text = titleSummary
-
             val summary = covidRestriction.data.summary
-            val htmlSummary = Html.fromHtml(summary, Html.FROM_HTML_MODE_COMPACT) // Bei paar Felder bekommen wir <p> zurück (HTML code) -> unschön
-
-
-            findViewById<TextView>(R.id.result_summary).text = htmlSummary  //result = id von TextView
-
+            val htmlSummary = Html.fromHtml(summary, Html.FROM_HTML_MODE_COMPACT)
+            findViewById<TextView>(R.id.result_summary).text = htmlSummary
             val titleStats = "STATISTIC"
             findViewById<TextView>(R.id.title_statistics).text = titleStats
 
@@ -108,12 +96,9 @@ class CountryActivity : AppCompatActivity() {
             val percentage2 = vaccinated_fully_round.toString() + " %"
             findViewById<TextView>(R.id.result_vaccinated_fully).text = percentage2
 
-
             // Area Policy
             val areaPolicyTitel = "COUNTRY POLICY"
             findViewById<TextView>(R.id.title_area_policy).text = areaPolicyTitel
-
-
 
             var areaPolicyText = covidRestriction.data.areaPolicy?.text
             if(areaPolicyText == null) areaPolicyText = "NO INFORMATION"

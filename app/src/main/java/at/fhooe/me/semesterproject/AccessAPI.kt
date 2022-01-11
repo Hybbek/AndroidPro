@@ -10,17 +10,9 @@ import kotlinx.coroutines.*
 import kotlin.properties.Delegates
 
 class AccessAPI: Application() {
-    //val job = SupervisorJob()
-    //val scope = CoroutineScope(Dispatchers.Main + job)
 
     private lateinit var amadeus: Amadeus
-
-
-
-    var country_code = ""
-
     lateinit var covidRestrictions: CovidRestrictions
-
 
     override fun onCreate() {
         super.onCreate()
@@ -29,23 +21,16 @@ class AccessAPI: Application() {
             .setClientId("ozRvdBqRazWhWXH8c0aVNAJlKmyo0eCD")
             .setClientSecret("yb8cDE5aJHtoF0iM")
             .build()
-
-        //get()
     }
 
-
     suspend fun load(country_code: String) {
-
              val res = amadeus.get("v1/duty-of-care/diseases/covid19-area-report?countryCode=${country_code.uppercase()}")
              Log.d(this.javaClass.simpleName, "requestApi = ${res.toString()}")
              covidRestrictions = Gson().fromJson(res.toString(), CovidRestrictions::class.java)
              Log.d(javaClass.simpleName, "Converted Object ${covidRestrictions}")
-
     }
 
     fun get() : CovidRestrictions{
         return covidRestrictions
     }
-
-
 }
